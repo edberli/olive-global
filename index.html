@@ -176,16 +176,23 @@
             background: var(--ouji-dark);
             border-top: 1px solid rgba(255,255,255,0.1);
         }
-        .category-nav-left {
-            float: left;
+        .category-list {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            padding: 0 40px;
+            gap: 0;
+            overflow-x: auto;
+            align-items: center;
         }
         .dropdown-menu {
             position: relative;
             display: inline-block;
+            flex-shrink: 0;
         }
         .dropdown-btn {
-            background: rgba(255,255,255,0.1);
-            color: var(--white);
+            background: none;
+            color: rgba(255,255,255,0.7);
             border: none;
             padding: 20px 25px;
             font-size: 13px;
@@ -197,16 +204,18 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            white-space: nowrap;
         }
         .dropdown-btn:hover {
-            background: rgba(255,255,255,0.15);
+            color: var(--white);
+            background: rgba(255,255,255,0.1);
         }
         .dropdown-content {
             display: none;
             position: absolute;
             left: 0;
             top: 100%;
-            background: var(--ouji-darker);
+            background: var(--ouji-blue);
             min-width: 220px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             z-index: 1000;
@@ -233,7 +242,6 @@
             width: 18px;
             text-align: center;
         }
-        .category-list {
             max-width: 1440px;
             margin: 0 auto;
             display: flex;
@@ -757,20 +765,20 @@
         </div>
     </header>
         <nav class="category-nav">
-            <div class="category-nav-left">
-                <div class="dropdown-menu">
-                    <button class="dropdown-btn" onclick="toggleDropdown()">
-                        <i class="fas fa-bars"></i> 關於我們 <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="dropdown-content" id="dropdownContent">
-                        <a href="#" onclick="showAbout(); return false;"><i class="fas fa-info-circle"></i> 關於 OUJI</a>
-                        <a href="#" onclick="showAddress(); return false;"><i class="fas fa-map-marker-alt"></i> 地鋪地址</a>
-                        <a href="#" onclick="showContact(); return false;"><i class="fas fa-envelope"></i> 聯絡我們</a>
-                        <a href="https://www.instagram.com/ouji_kbeauty" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                    </div>
-                </div>
-            </div>
             <ul class="category-list">
+                <li class="category-item">
+                    <div class="dropdown-menu">
+                        <button class="dropdown-btn" onclick="toggleDropdown()">
+                            <i class="fas fa-bars"></i> 關於我們 <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="dropdownContent">
+                            <a href="#" onclick="showAbout(); return false;"><i class="fas fa-info-circle"></i> 關於 OUJI</a>
+                            <a href="#" onclick="showAddress(); return false;"><i class="fas fa-map-marker-alt"></i> 地鋪地址</a>
+                            <a href="#" onclick="showContact(); return false;"><i class="fas fa-envelope"></i> 聯絡我們</a>
+                            <a href="https://www.instagram.com/ouji_kbeauty" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                        </div>
+                    </div>
+                </li>
                 <li class="category-item active" onclick="filterCategory('all', this)">BEST</li>
                 <li class="category-item" onclick="filterCategory('skincare', this)">護膚</li>
                 <li class="category-item" onclick="filterCategory('makeup', this)">彩妝</li>
