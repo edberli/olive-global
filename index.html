@@ -677,11 +677,6 @@
             <div class="logo" onclick="scrollToTop()">
                 <img src="logo.png" alt="OUJI Logo">
             </div>
-            <button class="search-toggle" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
-            <div class="search-bar" id="searchBar">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-                <input type="text" class="search-input" placeholder="搜尋產品、品牌..." onkeyup="searchProducts(this.value)">
-            </div>
             <div class="header-actions">
                 <button class="action-btn" onclick="alert('會員功能開發中！')">
                     <i class="far fa-user"></i>
@@ -696,8 +691,14 @@
                     <span>購物車</span>
                     <span class="cart-badge" id="cartCount">0</span>
                 </button>
+                <button class="search-toggle" onclick="toggleSearch()"><i class="fas fa-search"></i></button>
             </div>
         </div>
+        <div class="search-bar" id="searchBar">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+            <input type="text" class="search-input" placeholder="搜尋產品、品牌..." onkeyup="searchProducts(this.value)">
+        </div>
+    </header>
         <nav class="category-nav">
             <ul class="category-list">
                 <li class="category-item active" onclick="filterCategory('all', this)">BEST</li>
