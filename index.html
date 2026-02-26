@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olive Global - 韓國美妝購物平台</title>
+    <title>OUJI - 日式美妝購物平台</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --olive-green: #00A651;
-            --olive-dark: #007A3D;
-            --olive-light: #E8F5E9;
+            --ouji-blue: #5B7C99;
+            --ouji-dark: #3D5A73;
+            --ouji-light: #E8F0F5;
+            --ouji-pink: #FFB7C5;
             --accent-pink: #FF6B9D;
             --text-dark: #1A1A1A;
             --text-gray: #666666;
@@ -34,7 +35,7 @@
 
         /* Top Banner */
         .top-banner {
-            background: var(--olive-green);
+            background: var(--ouji-blue);
             color: white;
             text-align: center;
             padding: 10px 0;
@@ -62,13 +63,13 @@
         .logo {
             font-size: 28px;
             font-weight: 900;
-            color: var(--olive-green);
+            color: var(--ouji-blue);
             display: flex;
             align-items: center;
             gap: 10px;
             cursor: pointer;
         }
-        .logo i { font-size: 24px; }
+        .logo i { font-size: 24px; color: var(--ouji-pink); }
         .search-bar {
             flex: 1;
             max-width: 550px;
@@ -85,7 +86,7 @@
         }
         .search-input:focus {
             outline: none;
-            border-color: var(--olive-green);
+            border-color: var(--ouji-blue);
             background: var(--bg-white);
         }
         .search-btn {
@@ -116,8 +117,8 @@
             font-size: 22px;
             color: var(--text-dark);
         }
-        .action-btn:hover { color: var(--olive-green); }
-        .action-btn:hover i { color: var(--olive-green); }
+        .action-btn:hover { color: var(--ouji-blue); }
+        .action-btn:hover i { color: var(--ouji-blue); }
         .cart-badge {
             position: absolute;
             top: -8px;
@@ -158,7 +159,7 @@
             transition: all 0.3s;
         }
         .category-item:hover, .category-item.active {
-            color: var(--olive-green);
+            color: var(--ouji-blue);
         }
         .category-item.active::after {
             content: '';
@@ -167,7 +168,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: var(--olive-green);
+            background: var(--ouji-blue);
         }
 
         /* Main Banner */
@@ -177,7 +178,7 @@
             padding: 0 24px;
         }
         .banner-slider {
-            background: linear-gradient(135deg, #00A651 0%, #00C853 100%);
+            background: linear-gradient(135deg, #5B7C99 0%, #7A96B3 100%);
             border-radius: var(--radius-lg);
             padding: 80px;
             color: white;
@@ -200,7 +201,7 @@
         }
         .banner-btn {
             background: white;
-            color: var(--olive-green);
+            color: var(--ouji-blue);
             padding: 16px 40px;
             border-radius: var(--radius-sm);
             font-weight: 700;
@@ -373,7 +374,7 @@
             font-weight: 700;
             text-transform: uppercase;
         }
-        .badge-best { background: var(--olive-green); color: white; }
+        .badge-best { background: var(--ouji-blue); color: white; }
         .badge-new { background: var(--accent-pink); color: white; }
         .badge-sale { background: #FF8A65; color: white; }
         .wishlist-btn {
@@ -437,8 +438,8 @@
             width: 100%;
             padding: 12px;
             background: white;
-            border: 2px solid var(--olive-green);
-            color: var(--olive-green);
+            border: 2px solid var(--ouji-blue);
+            color: var(--ouji-blue);
             font-weight: 600;
             border-radius: var(--radius-sm);
             cursor: pointer;
@@ -446,7 +447,7 @@
             font-size: 13px;
         }
         .add-cart-btn:hover {
-            background: var(--olive-green);
+            background: var(--ouji-blue);
             color: white;
         }
 
@@ -523,7 +524,7 @@
             color: white;
         }
         .offer-card.small {
-            background: linear-gradient(135deg, #00A651 0%, #00C853 100%);
+            background: linear-gradient(135deg, #5B7C99 0%, #7A96B3 100%);
             color: white;
         }
         .offer-badge {
@@ -583,7 +584,7 @@
         .footer-brand h3 {
             font-size: 24px;
             font-weight: 900;
-            color: var(--olive-green);
+            color: var(--ouji-blue);
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -612,7 +613,7 @@
             transition: all 0.3s;
         }
         .social-link:hover {
-            background: var(--olive-green);
+            background: var(--ouji-blue);
             color: white;
         }
         .footer-col h4 {
@@ -704,7 +705,7 @@
             margin-bottom: 2px;
         }
         .mobile-nav-item.active {
-            color: var(--olive-green);
+            color: var(--ouji-blue);
         }
         .mobile-nav-item.active i {
             transform: scale(1.1);
@@ -837,8 +838,8 @@
     <!-- Mobile Header (App Style) -->
     <div class="mobile-header">
         <div class="logo" onclick="scrollToTop()">
-            <i class="fas fa-leaf"></i>
-            <span>OLIVE</span>
+            <i class="fas fa-fan"></i>
+            <span>OUJI</span>
         </div>
         <div class="mobile-header-actions">
             <button onclick="alert('搜尋功能開發中！')"><i class="fas fa-search"></i></button>
@@ -864,8 +865,8 @@
     <header>
         <div class="header-top">
             <div class="logo" onclick="scrollToTop()">
-                <i class="fas fa-leaf"></i>
-                <span>OLIVE GLOBAL</span>
+                <i class="fas fa-fan"></i>
+                <span>OUJI</span>
             </div>
             <div class="search-bar">
                 <button class="search-btn"><i class="fas fa-search"></i></button>
@@ -924,14 +925,14 @@
     <section class="main-banner">
         <div class="banner-slider">
             <div class="banner-content">
-                <h1>夏季限定<br>低至 5 折</h1>
-                <p>韓國直送美妝產品，限時優惠，免費配送香港</p>
+                <h1>日式美學<br>低至 5 折</h1>
+                <p>日本直送美妝產品，限時優惠，免費配送香港</p>
                 <button class="banner-btn" onclick="scrollToProducts()">
                     立即選購 <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
             <div class="banner-image">
-                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=500" alt="K-Beauty">
+                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=500" alt="J-Beauty">
             </div>
         </div>
     </section>
@@ -1023,8 +1024,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <h3><i class="fas fa-leaf"></i> OLIVE GLOBAL</h3>
-                <p>香港首選韓式美妝購物平台，為您帶來韓國最新最熱嘅美妝產品。100% 正品保證，免費直運香港。</p>
+                <h3><i class="fas fa-fan"></i> OUJI</h3>
+                <p>日式美妝購物平台，為您帶來日本最新最熱嘅美妝產品。100% 正品保證，免費直運香港。</p>
                 <div class="social-links">
                     <a href="#" class="social-link" onclick="alert('Instagram 開發中！')"><i class="fab fa-instagram"></i></a>
                     <a href="#" class="social-link" onclick="alert('Facebook 開發中！')"><i class="fab fa-facebook-f"></i></a>
