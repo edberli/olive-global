@@ -46,22 +46,24 @@
             letter-spacing: 1px;
         }
 
-        /* Header - Magazine Style */
+        /* Header */
         header {
             background: var(--ouji-blue);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             border-bottom: 3px solid var(--ouji-dark);
         }
         .header-main {
             max-width: 1440px;
             margin: 0 auto;
-            padding: 25px 40px;
+            padding: 15px 40px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 40px;
+            gap: 30px;
         }
         .logo {
             cursor: pointer;
@@ -137,21 +139,21 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 35px;
+            gap: 25px;
         }
         .action-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             color: rgba(255,255,255,0.8);
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 1px;
             background: none;
             position: relative;
         }
         .action-btn i {
-            font-size: 24px;
+            font-size: 20px;
             color: var(--white);
         }
         .action-btn:hover { color: var(--white); }
@@ -171,46 +173,45 @@
             justify-content: center;
         }
 
-        /* Category Nav */
-        .category-nav {
+        /* Left Sidebar Navigation */
+        .sidebar-nav {
+            position: fixed;
+            left: 0;
+            top: 70px;
+            width: 200px;
             background: var(--ouji-dark);
-            border-top: 1px solid rgba(255,255,255,0.1);
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+            z-index: 999;
+            border-right: 1px solid rgba(255,255,255,0.1);
         }
-        .category-list {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: flex;
-            padding: 0 40px;
-            gap: 0;
-            overflow-x: auto;
+        .sidebar-nav ul {
+            padding: 20px 0;
         }
-        .category-item {
-            padding: 20px 35px;
+        .sidebar-nav li {
+            padding: 16px 24px;
             font-size: 13px;
             font-weight: 500;
             color: rgba(255,255,255,0.7);
             cursor: pointer;
-            position: relative;
-            white-space: nowrap;
             transition: all 0.3s;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
+            border-left: 3px solid transparent;
         }
-        .category-item:hover, .category-item.active {
+        .sidebar-nav li:hover, .sidebar-nav li.active {
             color: var(--white);
-            background: rgba(255,255,255,0.1);
-        }
-        .category-item.active::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--white);
+            background: rgba(255,255,255,0.05);
+            border-left-color: var(--white);
         }
 
-        /* Hero Banner - Magazine Full Width */
+        /* Main Content */
+        .main-content {
+            margin-left: 200px;
+            padding-top: 70px;
+        }
+
+        /* Hero Banner */
         .hero-section {
             max-width: 100%;
             margin: 0;
@@ -218,13 +219,13 @@
         }
         .hero-banner {
             background: linear-gradient(135deg, var(--ouji-darker) 0%, var(--ouji-blue) 50%, var(--ouji-light) 100%);
-            padding: 120px 80px;
+            padding: 100px 80px;
             color: var(--white);
             display: grid;
             grid-template-columns: 1.2fr 1fr;
-            gap: 100px;
+            gap: 80px;
             align-items: center;
-            min-height: 650px;
+            min-height: 550px;
             position: relative;
             overflow: hidden;
         }
@@ -232,7 +233,7 @@
             content: 'OUJI';
             position: absolute;
             font-family: 'Playfair Display', serif;
-            font-size: 400px;
+            font-size: 300px;
             font-weight: 700;
             color: rgba(255,255,255,0.03);
             right: -50px;
@@ -257,7 +258,7 @@
         }
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 80px;
+            font-size: 70px;
             font-weight: 700;
             margin-bottom: 30px;
             line-height: 1.1;
@@ -298,15 +299,15 @@
         }
         .hero-image img {
             max-width: 100%;
-            max-height: 450px;
+            max-height: 400px;
             object-fit: contain;
             filter: drop-shadow(0 30px 60px rgba(0,0,0,0.3));
         }
 
         /* Section Styling */
         .section {
-            max-width: 1440px;
-            margin: 100px auto;
+            max-width: 1400px;
+            margin: 80px auto;
             padding: 0 40px;
         }
         .section-header {
@@ -319,7 +320,7 @@
         }
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 700;
             color: var(--ouji-dark);
             letter-spacing: -1px;
@@ -343,11 +344,11 @@
         }
         .view-all:hover { gap: 15px; }
 
-        /* Product Grid - Magazine Layout */
+        /* Product Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
+            gap: 35px;
         }
         .product-card {
             background: var(--white);
@@ -413,7 +414,7 @@
             color: var(--white);
         }
         .product-info {
-            padding: 28px;
+            padding: 25px;
         }
         .product-brand {
             font-size: 11px;
@@ -471,21 +472,21 @@
         /* Editorial Banner */
         .editorial-banner {
             background: var(--ouji-blue);
-            padding: 100px 80px;
+            padding: 80px 60px;
             color: var(--white);
-            margin: 80px 0;
+            margin: 60px 0;
         }
         .editorial-content {
-            max-width: 1440px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px;
             align-items: center;
         }
         .editorial-text h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 56px;
+            font-size: 48px;
             font-weight: 700;
             margin-bottom: 25px;
             line-height: 1.2;
@@ -519,23 +520,22 @@
         footer {
             background: var(--ouji-dark);
             color: var(--white);
-            padding: 100px 40px 50px;
-            margin-top: 120px;
+            padding: 80px 40px 50px;
+            margin-top: 100px;
         }
         .footer-content {
             max-width: 1440px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 80px;
-            margin-bottom: 80px;
+            gap: 60px;
+            margin-bottom: 60px;
         }
-        .footer-brand h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            letter-spacing: 5px;
+        .footer-brand img {
+            height: 26px;
+            width: auto;
+            margin-bottom: 20px;
+            object-fit: contain;
         }
         .footer-brand p {
             color: rgba(255,255,255,0.7);
@@ -642,25 +642,24 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-banner { grid-template-columns: 1fr; padding: 80px 40px; gap: 60px; }
-            .hero-title { font-size: 56px; }
-            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-            .editorial-content { grid-template-columns: 1fr; gap: 50px; }
-            .footer-content { grid-template-columns: 1fr 1fr; gap: 50px; }
+            .sidebar-nav { display: none; }
+            .main-content { margin-left: 0; }
+            .hero-banner { grid-template-columns: 1fr; padding: 60px 40px; gap: 50px; }
+            .hero-title { font-size: 48px; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+            .editorial-content { grid-template-columns: 1fr; gap: 40px; }
+            .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; }
         }
         @media (max-width: 768px) {
-            .header-main { padding: 20px; flex-wrap: wrap; }
-            .search-bar { order: 3; width: 100%; max-width: 100%; margin-top: 20px; }
-            .category-list { padding: 0 20px; }
-            .category-item { padding: 18px 25px; font-size: 12px; }
-            .hero-banner { padding: 60px 20px; }
-            .hero-title { font-size: 42px; }
-            .section { padding: 0 20px; margin: 60px auto; }
-            .section-title { font-size: 36px; }
+            .header-main { padding: 15px 20px; }
+            .hero-banner { padding: 40px 20px; }
+            .hero-title { font-size: 36px; }
+            .section { padding: 0 20px; margin: 50px auto; }
+            .section-title { font-size: 32px; }
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .product-info { padding: 20px; }
+            .product-info { padding: 18px; }
             .mobile-bottom-nav.show { display: flex; }
-            .footer-content { grid-template-columns: 1fr; gap: 40px; padding: 20px; }
+            .footer-content { grid-template-columns: 1fr; gap: 30px; padding: 20px; }
             body { padding-bottom: 70px; }
         }
     </style>
@@ -698,84 +697,90 @@
                 </button>
             </div>
         </div>
-        <nav class="category-nav">
-            <ul class="category-list">
-                <li class="category-item active" onclick="filterCategory('all', this)">BEST</li>
-                <li class="category-item" onclick="filterCategory('skincare', this)">護膚</li>
-                <li class="category-item" onclick="filterCategory('makeup', this)">彩妝</li>
-                <li class="category-item" onclick="filterCategory('fragrance', this)">香水/身體</li>
-                <li class="category-item" onclick="filterCategory('hair', this)">護髮</li>
-                <li class="category-item" onclick="filterCategory('health', this)">健康食品</li>
-            </ul>
-        </nav>
     </header>
 
-    <!-- Hero Banner -->
-    <section class="hero-section">
-        <div class="hero-banner">
-            <div class="hero-content">
-                <span class="hero-tag">K-Beauty Collection</span>
-                <h1 class="hero-title">韓式美學<br>時尚新定義</h1>
-                <p class="hero-subtitle">精選韓國最受歡迎嘅護膚、彩妝同美妝產品，為您帶來最先進嘅 K-Beauty 體驗。100% 正品保證，韓國直送香港。</p>
-                <button class="hero-cta" onclick="scrollToProducts()">
-                    探索系列 <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600" alt="K-Beauty Products">
-            </div>
-        </div>
-    </section>
+    <!-- Left Sidebar Navigation -->
+    <nav class="sidebar-nav">
+        <ul>
+            <li class="active" onclick="filterCategory('all', this)">全部產品</li>
+            <li onclick="filterCategory('skincare', this)">護膚</li>
+            <li onclick="filterCategory('makeup', this)">彩妝</li>
+            <li onclick="filterCategory('fragrance', this)">香水/身體</li>
+            <li onclick="filterCategory('hair', this)">護髮</li>
+            <li onclick="filterCategory('health', this)">健康食品</li>
+            <li onclick="filterCategory('lifestyle', this)">生活用品</li>
+        </ul>
+    </nav>
 
-    <!-- Weekly New Section -->
-    <section class="section">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title">本週新品</h2>
-                <p class="section-subtitle">Latest Arrivals - 韓國最新產品直送</p>
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Banner -->
+        <section class="hero-section">
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <span class="hero-tag">K-Beauty Collection</span>
+                    <h1 class="hero-title">韓式美學<br>時尚新定義</h1>
+                    <p class="hero-subtitle">精選韓國最受歡迎嘅護膚、彩妝同美妝產品，為您帶來最先進嘅 K-Beauty 體驗。100% 正品保證，韓國直送香港。</p>
+                    <button class="hero-cta" onclick="scrollToProducts()">
+                        探索系列 <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600" alt="K-Beauty Products">
+                </div>
             </div>
-            <div class="view-all" onclick="filterCategory('all', document.querySelector('.category-item.active'))">
-                查看全部 <i class="fas fa-arrow-right"></i>
-            </div>
-        </div>
-        <div class="product-grid" id="weeklyContainer"></div>
-    </section>
+        </section>
 
-    <!-- Editorial Banner -->
-    <div class="editorial-banner">
-        <div class="editorial-content">
-            <div class="editorial-text">
-                <h2>夏季限定<br>低至 5 折</h2>
-                <p>精選韓國熱賣產品，限時優惠。包括 COSRX、Laneige、Rom&nd 等知名品牌，免費配送香港，30 日退貨保證。</p>
-                <button class="editorial-btn" onclick="scrollToProducts()">
-                    立即選購 <i class="fas fa-arrow-right"></i>
-                </button>
+        <!-- Weekly New Section -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">本週新品</h2>
+                    <p class="section-subtitle">Latest Arrivals - 韓國最新產品直送</p>
+                </div>
+                <div class="view-all" onclick="filterCategory('all', document.querySelector('.sidebar-nav li.active'))">
+                    查看全部 <i class="fas fa-arrow-right"></i>
+                </div>
             </div>
-            <div class="editorial-image">
-                <img src="https://images.unsplash.com/photo-1556228720-19875c4b84d7?w=600" alt="Sale" style="max-width: 100%; border-radius: 0;">
+            <div class="product-grid" id="weeklyContainer"></div>
+        </section>
+
+        <!-- Editorial Banner -->
+        <div class="editorial-banner">
+            <div class="editorial-content">
+                <div class="editorial-text">
+                    <h2>夏季限定<br>低至 5 折</h2>
+                    <p>精選韓國熱賣產品，限時優惠。包括 COSRX、Laneige、Rom&nd 等知名品牌，免費配送香港，30 日退貨保證。</p>
+                    <button class="editorial-btn" onclick="scrollToProducts()">
+                        立即選購 <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                <div class="editorial-image">
+                    <img src="https://images.unsplash.com/photo-1556228720-19875c4b84d7?w=600" alt="Sale" style="max-width: 100%;">
+                </div>
             </div>
         </div>
+
+        <!-- Best Sellers Section -->
+        <section class="section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">熱賣排行榜</h2>
+                    <p class="section-subtitle">Best Sellers - 超過 10,000+ 用戶評價</p>
+                </div>
+                <div class="view-all">
+                    查看全部 <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            <div class="product-grid" id="productContainer"></div>
+        </section>
     </div>
-
-    <!-- Best Sellers Section -->
-    <section class="section">
-        <div class="section-header">
-            <div>
-                <h2 class="section-title">熱賣排行榜</h2>
-                <p class="section-subtitle">Best Sellers - 超過 10,000+ 用戶評價</p>
-            </div>
-            <div class="view-all">
-                查看全部 <i class="fas fa-arrow-right"></i>
-            </div>
-        </div>
-        <div class="product-grid" id="productContainer"></div>
-    </section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="logo.png" alt="OUJI Logo" style="height: 26px; width: auto; margin-bottom: 20px; object-fit: contain;">
+                <img src="logo.png" alt="OUJI Logo">
                 <p>專注韓式美妝，為您帶來韓國最新最熱嘅護膚、彩妝、香水同護髮產品。100% 正品保證，韓國直送香港。</p>
                 <div class="footer-address">
                     <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>
@@ -811,10 +816,10 @@
             <div class="footer-col">
                 <h4>熱門分類</h4>
                 <ul>
-                    <li><a href="#" onclick="filterCategory('skincare', document.querySelectorAll('.category-item')[1])">護膚</a></li>
-                    <li><a href="#" onclick="filterCategory('makeup', document.querySelectorAll('.category-item')[2])">彩妝</a></li>
-                    <li><a href="#" onclick="filterCategory('fragrance', document.querySelectorAll('.category-item')[3])">香水/身體</a></li>
-                    <li><a href="#" onclick="filterCategory('hair', document.querySelectorAll('.category-item')[4])">護髮</a></li>
+                    <li><a href="#" onclick="filterCategory('skincare', document.querySelectorAll('.sidebar-nav li')[1])">護膚</a></li>
+                    <li><a href="#" onclick="filterCategory('makeup', document.querySelectorAll('.sidebar-nav li')[2])">彩妝</a></li>
+                    <li><a href="#" onclick="filterCategory('fragrance', document.querySelectorAll('.sidebar-nav li')[3])">香水/身體</a></li>
+                    <li><a href="#" onclick="filterCategory('hair', document.querySelectorAll('.sidebar-nav li')[4])">護髮</a></li>
                 </ul>
             </div>
         </div>
@@ -829,7 +834,7 @@
             <i class="fas fa-home"></i>
             <span>首頁</span>
         </button>
-        <button class="mobile-nav-item" onclick="filterCategory('all', document.querySelector('.category-item.active'))">
+        <button class="mobile-nav-item" onclick="alert('分類功能開發中！')">
             <i class="fas fa-th-large"></i>
             <span>分類</span>
         </button>
@@ -923,7 +928,7 @@
 
         // 分類篩選
         function filterCategory(category, element) {
-            document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.sidebar-nav li').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             renderProducts(category);
         }
