@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olive Global - 韓式美妝生活館</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --brand-blue: #004E98;
+            --brand-light: #E8F1F8;
+            --accent-red: #FF4757;
+            --text-main: #2D3436;
+            --text-sub: #636E72;
+            --bg-body: #F7F9FC;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans TC', sans-serif; background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Header */
+        header { background: var(--white); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); }
+        .top-promo { background: var(--brand-blue); color: var(--white); text-align: center; font-size: 13px; padding: 8px 0; font-weight: 500; }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 15px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .logo { font-family: 'Poppins', sans-serif; font-size: 26px; font-weight: 700; color: var(--brand-blue); display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .logo i { font-size: 20px; }
+        .search-wrapper { flex: 1; max-width: 500px; position: relative; }
+        .search-input { width: 100%; padding: 12px 20px 12px 45px; border: 2px solid #EEE; border-radius: 50px; font-size: 14px; background: #FAFAFA; transition: all 0.3s; }
+        .search-input:focus { outline: none; border-color: var(--brand-blue); background: var(--white); box-shadow: 0 0 0 4px rgba(0, 78, 152, 0.1); }
+        .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #AAA; }
+        .nav-actions { display: flex; align-items: center; gap: 24px; }
+        .action-item { display: flex; flex-direction: column; align-items: center; font-size: 12px; color: var(--text-sub); cursor: pointer; position: relative; }
+        .action-item i { font-size: 20px; margin-bottom: 4px; color: var(--text-main); }
+        .action-item:hover { color: var(--brand-blue); }
+        .action-item:hover i { color: var(--brand-blue); }
+        .cart-badge { position: absolute; top: -5px; right: -5px; background: var(--accent-red); color: white; font-size: 10px; font-weight: bold; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--white); }
+        .category-bar { background: var(--white); border-bottom: 1px solid #EEE; overflow-x: auto; }
+        .cat-list { max-width: 1280px; margin: 0 auto; display: flex; padding: 0 24px; gap: 32px; }
+        .cat-link { padding: 16px 0; font-size: 15px; font-weight: 600; color: var(--text-sub); position: relative; white-space: nowrap; cursor: pointer; }
+        .cat-link.active, .cat-link:hover { color: var(--brand-blue); }
+        .cat-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--brand-blue); border-radius: 3px 3px 0 0; }
+
+        /* Hero */
+        .hero-section { max-width: 1280px; margin: 24px auto; padding: 0 24px; }
+        .hero-banner { background: linear-gradient(135deg, #004E98 0%, #0077C2 100%); border-radius: var(--radius-lg); padding: 60px; color: white; display: flex; justify-content: space-between; align-items: center; position: relative; overflow: hidden; min-height: 350px; }
+        .hero-content { z-index: 2; max-width: 50%; }
+        .hero-tag { background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; margin-bottom: 16px; backdrop-filter: blur(5px); }
+        .hero-title { font-size: 42px; font-weight: 700; margin-bottom: 16px; line-height: 1.2; }
+        .hero-desc { font-size: 16px; opacity: 0.9; margin-bottom: 30px; }
+        .btn-primary { background: var(--white); color: var(--brand-blue); padding: 14px 32px; border-radius: 50px; font-weight: 700; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.2s; cursor: pointer; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+        .hero-shape { position: absolute; right: -50px; bottom: -100px; width: 400px; height: 400px; background: rgba(255,255,255,0.1); border-radius: 50%; }
+
+        /* Products */
+        .section-header { max-width: 1280px; margin: 60px auto 30px; padding: 0 24px; display: flex; justify-content: space-between; align-items: end; }
+        .section-title h2 { font-size: 24px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+        .section-title p { color: var(--text-sub); font-size: 14px; }
+        .view-all-btn { font-size: 14px; font-weight: 600; color: var(--brand-blue); display: flex; align-items: center; gap: 6px; cursor: pointer; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; max-width: 1280px; margin: 0 auto 80px; padding: 0 24px; }
+        .product-card { background: var(--white); border-radius: var(--radius-lg); overflow: hidden; transition: all 0.3s ease; position: relative; border: 1px solid transparent; cursor: pointer; }
+        .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); border-color: #EEE; }
+        .card-image { position: relative; padding-top: 100%; background: #F8F9FA; overflow: hidden; }
+        .card-image img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .product-card:hover .card-image img { transform: scale(1.05); }
+        .badge { position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; z-index: 2; text-transform: uppercase; }
+        .badge-best { background: var(--brand-blue); color: white; }
+        .badge-new { background: #2ED573; color: white; }
+        .badge-sale { background: var(--accent-red); color: white; }
+        .card-details { padding: 16px; }
+        .brand-name { font-size: 12px; color: var(--text-sub); font-weight: 600; margin-bottom: 4px; text-transform: uppercase; }
+        .product-name { font-size: 15px; font-weight: 500; color: var(--text-main); margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 44px; }
+        .price-area { display: flex; align-items: baseline; gap: 8px; margin-bottom: 16px; }
+        .current-price { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 700; color: var(--text-main); }
+        .original-price { font-size: 13px; color: #B2BEC3; text-decoration: line-through; }
+        .discount-tag { font-size: 12px; color: var(--accent-red); font-weight: 700; }
+        .add-to-cart-btn { width: 100%; padding: 12px; background: var(--white); border: 1px solid #EEE; color: var(--text-main); font-weight: 600; border-radius: var(--radius-sm); cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .add-to-cart-btn:hover { background: var(--brand-blue); color: white; border-color: var(--brand-blue); }
+
+        /* Footer */
+        footer { background: var(--white); padding: 60px 24px 30px; border-top: 1px solid #EEE; }
+        .footer-content { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { font-size: 16px; margin-bottom: 20px; color: var(--text-main); }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-sub); font-size: 14px; }
+        .footer-col ul li a:hover { color: var(--brand-blue); }
+        .copyright { text-align: center; color: #B2BEC3; font-size: 13px; padding-top: 30px; border-top: 1px solid #F1F2F6; }
+
+        /* Toast */
+        #toast { visibility: hidden; min-width: 280px; background-color: #2D3436; color: #fff; text-align: center; border-radius: 50px; padding: 16px; position: fixed; z-index: 1001; left: 50%; bottom: 40px; transform: translateX(-50%); font-size: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; gap: 10px; }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 40px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 40px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        /* Product Detail Modal */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
+        .modal-content { background-color: var(--white); margin: 5% auto; padding: 0; border-radius: var(--radius-lg); max-width: 900px; max-height: 85vh; overflow-y: auto; position: relative; animation: modalSlide 0.3s ease; }
+        @keyframes modalSlide { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        .close-modal { position: absolute; right: 20px; top: 20px; font-size: 28px; font-weight: bold; color: #AAA; cursor: pointer; z-index: 10; }
+        .close-modal:hover { color: var(--text-main); }
+        .modal-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+        .modal-image { background: #F8F9FA; padding: 40px; display: flex; align-items: center; justify-content: center; }
+        .modal-image img { max-width: 100%; max-height: 400px; object-fit: contain; }
+        .modal-details { padding: 40px; }
+        .modal-brand { font-size: 14px; color: var(--text-sub); font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+        .modal-title { font-size: 28px; font-weight: 700; color: var(--text-main); margin-bottom: 16px; }
+        .modal-price { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; }
+        .modal-current-price { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; color: var(--text-main); }
+        .modal-original-price { font-size: 18px; color: #B2BEC3; text-decoration: line-through; }
+        .modal-description { color: var(--text-sub); font-size: 14px; line-height: 1.8; margin-bottom: 24px; }
+        .modal-quantity { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .qty-btn { width: 40px; height: 40px; border: 1px solid #DDD; background: var(--white); font-size: 18px; cursor: pointer; transition: 0.2s; }
+        .qty-btn:hover { background: var(--brand-blue); color: white; border-color: var(--brand-blue); }
+        .qty-input { width: 60px; height: 40px; text-align: center; border: 1px solid #DDD; font-size: 16px; }
+        .modal-add-to-cart { width: 100%; padding: 16px; background: var(--brand-blue); color: white; border: none; font-size: 16px; font-weight: 700; border-radius: var(--radius-sm); cursor: pointer; transition: 0.2s; }
+        .modal-add-to-cart:hover { background: #003D7A; }
+        .modal-info { margin-top: 30px; padding-top: 30px; border-top: 1px solid #EEE; }
+        .modal-info-item { display: flex; justify-content: space-between; padding: 12px 0; font-size: 14px; }
+        .modal-info-label { color: var(--text-sub); }
+        .modal-info-value { color: var(--text-main); font-weight: 600; }
+
+        /* Cart Sidebar */
+        .cart-sidebar { position: fixed; top: 0; right: -400px; width: 400px; height: 100vh; background: var(--white); z-index: 3000; box-shadow: -5px 0 25px rgba(0,0,0,0.15); transition: right 0.3s ease; }
+        .cart-sidebar.open { right: 0; }
+        .cart-header { padding: 24px; border-bottom: 1px solid #EEE; display: flex; justify-content: space-between; align-items: center; }
+        .cart-header h3 { font-size: 20px; font-weight: 700; }
+        .close-cart { font-size: 24px; cursor: pointer; color: #AAA; }
+        .close-cart:hover { color: var(--text-main); }
+        .cart-items { padding: 24px; max-height: calc(100vh - 200px); overflow-y: auto; }
+        .cart-item { display: grid; grid-template-columns: 80px 1fr auto; gap: 16px; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #EEE; }
+        .cart-item-img { width: 80px; height: 80px; background: #F8F9FA; border-radius: 8px; overflow: hidden; }
+        .cart-item-img img { width: 100%; height: 100%; object-fit: cover; }
+        .cart-item-details h4 { font-size: 14px; margin-bottom: 8px; }
+        .cart-item-price { font-size: 16px; font-weight: 700; color: var(--text-main); }
+        .cart-item-remove { color: var(--accent-red); cursor: pointer; font-size: 12px; }
+        .cart-item-remove:hover { text-decoration: underline; }
+        .cart-footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; background: var(--white); border-top: 1px solid #EEE; }
+        .cart-total { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 18px; font-weight: 700; }
+        .checkout-btn { width: 100%; padding: 16px; background: var(--brand-blue); color: white; border: none; font-size: 16px; font-weight: 700; border-radius: var(--radius-sm); cursor: pointer; transition: 0.2s; }
+        .checkout-btn:hover { background: #003D7A; }
+        .empty-cart { text-align: center; padding: 60px 20px; color: var(--text-sub); }
+        .empty-cart i { font-size: 60px; margin-bottom: 20px; color: #DDD; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container { flex-wrap: wrap; }
+            .search-wrapper { order: 3; width: 100%; max-width: 100%; margin-top: 15px; }
+            .hero-banner { padding: 30px; flex-direction: column; text-align: center; }
+            .hero-content { max-width: 100%; }
+            .hero-title { font-size: 28px; }
+            .cat-list { padding: 0 20px; gap: 20px; }
+            .modal-body { grid-template-columns: 1fr; }
+            .modal-image { padding: 20px; }
+            .modal-details { padding: 24px; }
+            .cart-sidebar { width: 100%; right: -100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 頂部通知 -->
+    <div class="top-promo">🎉 新人註冊禮遇：滿 HK$300 減 HK$50 | 全場免運費</div>
+
+    <!-- 導航欄 -->
+    <header>
+        <div class="nav-container">
+            <div class="logo" onclick="scrollToTop()">
+                <i class="fas fa-leaf"></i> OLIVE GLOBAL
+            </div>
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="搜尋護膚、彩妝、健康食品..." onkeyup="searchProducts(this.value)">
+            </div>
+            <div class="nav-actions">
+                <div class="action-item" onclick="alert('會員功能開發中！')">
+                    <i class="far fa-user"></i>
+                    <span>會員</span>
+                </div>
+                <div class="action-item" onclick="alert('收藏功能開發中！')">
+                    <i class="far fa-heart"></i>
+                    <span>收藏</span>
+                </div>
+                <div class="action-item" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>購物車</span>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="category-bar">
+            <ul class="cat-list">
+                <li><a class="cat-link active" onclick="filterCategory('all', this)">BEST 排行榜</a></li>
+                <li><a class="cat-link" onclick="filterCategory('skincare', this)">護膚</a></li>
+                <li><a class="cat-link" onclick="filterCategory('makeup', this)">彩妝</a></li>
+                <li><a class="cat-link" onclick="filterCategory('body', this)">香水/身體</a></li>
+                <li><a class="cat-link" onclick="filterCategory('hair', this)">頭髮護理</a></li>
+                <li><a class="cat-link" onclick="filterCategory('health', this)">健康食品</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 主視覺橫幅 -->
+    <section class="hero-section">
+        <div class="hero-banner">
+            <div class="hero-shape"></div>
+            <div class="hero-content">
+                <span class="hero-tag">夏季限定特賣</span>
+                <h1 class="hero-title">K-Beauty<br>全球熱銷榜</h1>
+                <p class="hero-desc">探索韓國最受歡迎的美妝秘密，限時低至 5 折。</p>
+                <a class="btn-primary" onclick="scrollToProducts()">立即選購 <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 產品區域 -->
+    <div id="products" class="section-header">
+        <div class="section-title">
+            <h2>🔥 本週必買清單</h2>
+            <p>根據超過 10,000+ 用戶評價精選</p>
+        </div>
+        <div class="view-all-btn" onclick="filterCategory('all', document.querySelector('.cat-link.active'))">查看全部產品 <i class="fas fa-chevron-right"></i></div>
+    </div>
+
+    <div class="product-grid" id="productContainer"></div>
+
+    <!-- 頁腳 -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>關於我們</h4>
+                <ul>
+                    <li><a href="#" onclick="alert('品牌故事開發中！')">品牌故事</a></li>
+                    <li><a href="#" onclick="alert('門市查詢開發中！')">門市查詢</a></li>
+                    <li><a href="#" onclick="alert('新聞中心開發中！')">新聞中心</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>客戶服務</h4>
+                <ul>
+                    <li><a href="#" onclick="alert('配送說明開發中！')">配送說明</a></li>
+                    <li><a href="#" onclick="alert('退換貨政策開發中！')">退換貨政策</a></li>
+                    <li><a href="#" onclick="alert('常見問題開發中！')">常見問題</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>關注我們</h4>
+                <ul>
+                    <li><a href="#" onclick="alert('Instagram 開發中！')"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#" onclick="alert('Facebook 開發中！')"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#" onclick="alert('YouTube 開發中！')"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">&copy; 2025 Olive Global Shop. All Rights Reserved. 此為演示網站。</div>
+    </footer>
+
+    <!-- Toast -->
+    <div id="toast"><i class="fas fa-check-circle" style="color: #2ED573;"></i> 已成功加入購物車</div>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>購物車 (<span id="cartItemCount">0</span>)</h3>
+            <span class="close-cart" onclick="toggleCart()">&times;</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-bag"></i>
+                <p>購物車係空的</p>
+                <p style="font-size: 12px; margin-top: 10px;">揀啲靚嘢返屋企啦！</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>總計:</span>
+                <span id="cartTotal">HK$ 0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">前往結帳</button>
+        </div>
+    </div>
+
+    <script>
+        // 產品數據庫
+        const products = [
+            {
+                id: 1,
+                brand: "COSRX",
+                name: "Advanced Snail 96 Mucin Power Essence 蝸牛精華 100ml",
+                price: 189,
+                originalPrice: 250,
+                category: "skincare",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600",
+                badge: "No.1 熱賣",
+                badgeClass: "badge-best",
+                description: "含 96% 蝸牛分泌濾液，深層保濕修護，改善肌膚紋理，適合所有膚質。韓國必買精華之一！",
+                stock: 156,
+                shipping: "1-2 工作日"
+            },
+            {
+                id: 2,
+                brand: "Laneige",
+                name: "Water Sleeping Mask 睡眠面膜 70ml (薰衣草香型)",
+                price: 295,
+                originalPrice: 320,
+                category: "skincare",
+                image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=600",
+                badge: "補貨中",
+                badgeClass: "badge-new",
+                description: "夜間修護睡眠面膜，蘊含薰衣草精油，幫助放鬆身心，同時深層補水，醒來肌膚水嫩飽滿。",
+                stock: 89,
+                shipping: "1-2 工作日"
+            },
+            {
+                id: 3,
+                brand: "Innisfree",
+                name: "Green Tea Seed Hyaluronic Serum 綠茶籽保濕精華",
+                price: 210,
+                originalPrice: 280,
+                category: "skincare",
+                image: "https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?w=600",
+                badge: "-25%",
+                badgeClass: "badge-sale",
+                description: "濟州島綠茶萃取，結合透明質酸，長效保濕鎖水，令肌膚持久水潤有光澤。",
+                stock: 234,
+                shipping: "1-2 工作日"
+            },
+            {
+                id: 4,
+                brand: "Medicube",
+                name: "Age-R Ussera Deep Shot 膠原蛋白針 30ml",
+                price: 350,
+                originalPrice: 350,
+                category: "skincare",
+                image: "https://images.unsplash.com/photo-1629198688000-71f23e745b6e?w=600",
+                badge: "新品上市",
+                badgeClass: "badge-new",
+                description: "高科技抗老精華，促進膠原蛋白生成，撫平細紋，提升肌膚彈性，重現年輕光采。",
+                stock: 67,
+                shipping: "2-3 工作日"
+            },
+            {
+                id: 5,
+                brand: "Rom&nd",
+                name: "Juicy Lasting Tint 水膜唇釉 #06 Figfig",
+                price: 89,
+                originalPrice: 110,
+                category: "makeup",
+                image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600",
+                badge: "",
+                badgeClass: "",
+                description: "持久水光唇釉，顯色度高，滋潤不乾裂，#06 Figfig 係最受歡迎的無花果色。",
+                stock: 445,
+                shipping: "1-2 工作日"
+            },
+            {
+                id: 6,
+                brand: "Dr.Jart+",
+                name: "Cicapair Tiger Grass Cream 積雪草修護霜 50ml",
+                price: 380,
+                originalPrice: 450,
+                category: "skincare",
+                image: "https://images.unsplash.com/photo-1601049541289-9b3b7d5d7426?w=600",
+                badge: "敏感肌首選",
+                badgeClass: "badge-best",
+                description: "專為敏感肌膚設計，蘊含積雪草成分，舒緩修護，減少泛紅，強化肌膚屏障。",
+                stock: 123,
+                shipping: "1-2 工作日"
+            },
+            {
+                id: 7,
+                brand: "Sulwhasoo",
+                name: "First Care Activating Serum 滋陰生人參精華 90ml",
+                price: 890,
+                originalPrice: 1050,
+                category: "skincare",
+                image: "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?w=600",
+                badge: "高端系列",
+                badgeClass: "badge-best",
+                description: "奢華人參精華，激活肌膚自我修護能力，改善膚質，令肌膚緊緻有彈性。",
+                stock: 45,
+                shipping: "2-3 工作日"
+            },
+            {
+                id: 8,
+                brand: "Banila Co",
+                name: "Clean It Zero Cleansing Balm 卸妝膏 (經典款)",
+                price: 165,
+                originalPrice: 190,
+                category: "skincare",
+                image: "https://images.unsplash.com/photo-1556228720-19875c4b84d7?w=600",
+                badge: "",
+                badgeClass: "",
+                description: "溫柔和妝膏，輕鬆溶解彩妝和防曬，乳化快速，洗後不繃緊，適合所有膚質。",
+                stock: 312,
+                shipping: "1-2 工作日"
+            },
+            {
+                id: 9,
+                brand: "Etude House",
+                name: "Drawing Eye Brow 眉筆 #3 Gray Brown",
+                price: 65,
+                originalPrice: 79,
+                category: "makeup",
+                image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600",
+                badge: "熱賣",
+                badgeClass: "badge-best",
+                description: "極細眉筆，易於上色，持久不脫色，#3 Gray Brown 係自然灰棕色，適合亞洲人。",
+                stock: 567,
+                shipping: "1-2 工作日"
+            },
+            {
+                id: 10,
+                brand: "Some By Mi",
+                name: "AHA BHA PHA 30 Days Miracle Toner 奇蹟爽膚水 150ml",
+                price: 145,
+                originalPrice: 180,
+                category: "skincare",
+                image: "https://images.unsplash.com/photo-1608248597279-f99d160bfbc8?w=600",
+                badge: "-19%",
+                badgeClass: "badge-sale",
+                description: "含 AHA、BHA、PHA 三種酸類，溫和去角質，改善毛孔，30 日見證肌膚奇蹟。",
+                stock: 198,
+                shipping: "1-2 工作日"
+            },
+            {
+                id: 11,
+                brand: "Peripera",
+                name: "Ink Airy Velvet 絲絨唇釉 #18 Plum Cookie",
+                price: 95,
+                originalPrice: 115,
+                category: "makeup",
+                image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=600",
+                badge: "新品",
+                badgeClass: "badge-new",
+                description: "輕盈絲絨質地，顯色飽滿，持久不沾杯，#18 Plum Cookie 係氣質梅子色。",
+                stock: 234,
+                shipping: "1-2 工作日"
+            },
+            {
+                id: 12,
+                brand: "Torriden",
+                name: "DIVE-IN Low Molecular Hyaluronic Acid Serum 透明質酸精華 50ml",
+                price: 175,
+                originalPrice: 210,
+                category: "skincare",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600",
+                badge: "保濕首選",
+                badgeClass: "badge-best",
+                description: "5 種分子透明質酸，層層滲透補水，無香料無色素，敏感肌也可安心使用。",
+                stock: 289,
+                shipping: "1-2 工作日"
+            }
+        ];
+
+        // 購物車
+        let cart = [];
+        let currentQuantity = 1;
+        let currentModalProduct = null;
+
+        // 渲染產品
+        function renderProducts(filter = 'all') {
+            const container = document.getElementById('productContainer');
+            const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+            
+            container.innerHTML = filteredProducts.map(product => {
+                const badgeHtml = product.badge ? `<span class="badge ${product.badgeClass}">${product.badge}</span>` : '';
+                const discountHtml = product.originalPrice > product.price ? `<span class="discount-tag">省 HK$${product.originalPrice - product.price}</span>` : '';
+                
+                return `
+                <div class="product-card" onclick="openModal(${product.id})">
+                    <div class="card-image">
+                        ${badgeHtml}
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                    </div>
+                    <div class="card-details">
+                        <div class="brand-name">${product.brand}</div>
+                        <div class="product-name">${product.name}</div>
+                        <div class="price-area">
+                            <span class="current-price">HK$ ${product.price}</span>
+                            ${product.originalPrice > product.price ? `<span class="original-price">HK$ ${product.originalPrice}</span>` : ''}
+                        </div>
+                        ${discountHtml}
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id})">
+                            <i class="fas fa-plus"></i> 加入購物車
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // 搜尋產品
+        function searchProducts(keyword) {
+            const container = document.getElementById('productContainer');
+            const filteredProducts = products.filter(p => 
+                p.name.toLowerCase().includes(keyword.toLowerCase()) || 
+                p.brand.toLowerCase().includes(keyword.toLowerCase())
+            );
+            
+            container.innerHTML = filteredProducts.map(product => {
+                const badgeHtml = product.badge ? `<span class="badge ${product.badgeClass}">${product.badge}</span>` : '';
+                return `
+                <div class="product-card" onclick="openModal(${product.id})">
+                    <div class="card-image">
+                        ${badgeHtml}
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="card-details">
+                        <div class="brand-name">${product.brand}</div>
+                        <div class="product-name">${product.name}</div>
+                        <div class="price-area">
+                            <span class="current-price">HK$ ${product.price}</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id})">
+                            <i class="fas fa-plus"></i> 加入購物車
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // 分類篩選
+        function filterCategory(category, element) {
+            document.querySelectorAll('.cat-link').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+            renderProducts(category);
+        }
+
+        // 打開產品詳情
+        function openModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            currentModalProduct = product;
+            currentQuantity = 1;
+            
+            const modalBody = document.getElementById('modalBody');
+            const discountPercent = Math.round((product.originalPrice - product.price) / product.originalPrice * 100);
+            
+            modalBody.innerHTML = `
+                <div class="modal-image">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="modal-details">
+                    <div class="modal-brand">${product.brand}</div>
+                    <h2 class="modal-title">${product.name}</h2>
+                    <div class="modal-price">
+                        <span class="modal-current-price">HK$ ${product.price}</span>
+                        ${product.originalPrice > product.price ? `<span class="modal-original-price">HK$ ${product.originalPrice}</span><span class="discount-tag">-${discountPercent}%</span>` : ''}
+                    </div>
+                    <p class="modal-description">${product.description}</p>
+                    
+                    <div class="modal-quantity">
+                        <span style="font-weight: 600;">數量:</span>
+                        <button class="qty-btn" onclick="updateQuantity(-1)">-</button>
+                        <input type="number" class="qty-input" id="modalQty" value="1" min="1" max="10">
+                        <button class="qty-btn" onclick="updateQuantity(1)">+</button>
+                    </div>
+                    
+                    <button class="modal-add-to-cart" onclick="addToCartFromModal()">
+                        <i class="fas fa-shopping-bag"></i> 加入購物車
+                    </button>
+                    
+                    <div class="modal-info">
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">庫存</span>
+                            <span class="modal-info-value" style="color: #2ED573;">${product.stock} 件</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">運費</span>
+                            <span class="modal-info-value">免費</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <span class="modal-info-label">預計送達</span>
+                            <span class="modal-info-value">${product.shipping}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('productModal').style.display = 'block';
+        }
+
+        // 關閉詳情
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // 更新數量
+        function updateQuantity(change) {
+            const qtyInput = document.getElementById('modalQty');
+            let newQty = parseInt(qtyInput.value) + change;
+            if (newQty < 1) newQty = 1;
+            if (newQty > 10) newQty = 10;
+            qtyInput.value = newQty;
+            currentQuantity = newQty;
+        }
+
+        // 從詳情加入購物車
+        function addToCartFromModal() {
+            if (currentModalProduct) {
+                addToCart(currentModalProduct.id, currentQuantity);
+                closeModal();
+            }
+        }
+
+        // 加入購物車
+        function addToCart(productId, quantity = 1) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+            
+            updateCartCount();
+            renderCart();
+            showToast();
+        }
+
+        // 更新購物車數量
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+            document.getElementById('cartItemCount').textContent = count;
+        }
+
+        // 渲染購物車
+        function renderCart() {
+            const cartItems = document.getElementById('cartItems');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <p>購物車係空的</p>
+                        <p style="font-size: 12px; margin-top: 10px;">揀啲靚嘢返屋企啦！</p>
+                    </div>
+                `;
+                document.getElementById('cartTotal').textContent = 'HK$ 0';
+                return;
+            }
+            
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-img">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="cart-item-details">
+                        <h4>${item.name}</h4>
+                        <div class="cart-item-price">HK$ ${item.price} x ${item.quantity}</div>
+                        <div class="cart-item-remove" onclick="removeFromCart(${item.id})">移除</div>
+                    </div>
+                    <div style="text-align: right; font-weight: 700;">HK$ ${item.price * item.quantity}</div>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            document.getElementById('cartTotal').textContent = `HK$ ${total.toLocaleString()}`;
+        }
+
+        // 從購物車移除
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartCount();
+            renderCart();
+        }
+
+        // 切換購物車
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+        }
+
+        // 結帳
+        function checkout() {
+            if (cart.length === 0) {
+                alert('購物車係空的！');
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            alert(`感謝您的訂單！\n\n總金額：HK$ ${total.toLocaleString()}\n\n（結帳功能開發中）`);
+        }
+
+        // 顯示 Toast
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(() => toast.className = toast.className.replace("show", ""), 3000);
+        }
+
+        // 滾動到產品區
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 滾動到頂部
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 點擊 Modal 外關閉
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // 初始化
+        renderProducts();
+    </script>
+</body>
+</html>
