@@ -176,6 +176,63 @@
             background: var(--ouji-dark);
             border-top: 1px solid rgba(255,255,255,0.1);
         }
+        .category-nav-left {
+            float: left;
+        }
+        .dropdown-menu {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-btn {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            border: none;
+            padding: 20px 25px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .dropdown-btn:hover {
+            background: rgba(255,255,255,0.15);
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background: var(--ouji-darker);
+            min-width: 220px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .dropdown-content.show {
+            display: block;
+        }
+        .dropdown-content a {
+            color: rgba(255,255,255,0.8);
+            padding: 15px 25px;
+            text-decoration: none;
+            display: block;
+            font-size: 13px;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .dropdown-content a:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+        }
+        .dropdown-content a i {
+            margin-right: 12px;
+            width: 18px;
+            text-align: center;
+        }
         .category-list {
             max-width: 1440px;
             margin: 0 auto;
@@ -700,6 +757,19 @@
         </div>
     </header>
         <nav class="category-nav">
+            <div class="category-nav-left">
+                <div class="dropdown-menu">
+                    <button class="dropdown-btn" onclick="toggleDropdown()">
+                        <i class="fas fa-bars"></i> 關於我們 <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="#" onclick="showAbout(); return false;"><i class="fas fa-info-circle"></i> 關於 OUJI</a>
+                        <a href="#" onclick="showAddress(); return false;"><i class="fas fa-map-marker-alt"></i> 地鋪地址</a>
+                        <a href="#" onclick="showContact(); return false;"><i class="fas fa-envelope"></i> 聯絡我們</a>
+                        <a href="https://www.instagram.com/ouji_kbeauty" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
             <ul class="category-list">
                 <li class="category-item active" onclick="filterCategory('all', this)">BEST</li>
                 <li class="category-item" onclick="filterCategory('skincare', this)">護膚</li>
@@ -927,6 +997,38 @@
             document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
             element.classList.add('active');
             renderProducts(category);
+        }
+
+        // 下拉選單
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownContent');
+            dropdown.classList.toggle('show');
+        }
+
+        // 關閉下拉選單 (點擊外部)
+        document.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.dropdown-menu');
+            if (dropdown && !dropdown.contains(event.target)) {
+                document.getElementById('dropdownContent').classList.remove('show');
+            }
+        });
+
+        // 顯示關於我們
+        function showAbout() {
+            alert('關於 OUJI\n\n專注韓式美妝，為您帶來韓國最新最熱嘅護膚、彩妝、香水同護髮產品。100% 正品保證，韓國直送香港。');
+            document.getElementById('dropdownContent').classList.remove('show');
+        }
+
+        // 顯示地址
+        function showAddress() {
+            alert('地鋪地址\n\n香港觀塘觀塘道 472 至 480 號\n觀塘工業中心一期 地下 B 舖');
+            document.getElementById('dropdownContent').classList.remove('show');
+        }
+
+        // 顯示聯絡我們
+        function showContact() {
+            alert('聯絡我們\n\nEmail: info@ouji.com.hk\nInstagram: @ouji_kbeauty\nWhatsApp: +852 XXXX XXXX');
+            document.getElementById('dropdownContent').classList.remove('show');
         }
 
         // 搜尋產品
